@@ -1,0 +1,87 @@
+[project]
+name = "pytestp"
+description = "..."
+version="0.1.0"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev=[
+    "black==25.1.0",
+    "pyright>=1.1.404",
+    "ruff",
+]
+
+
+[project.urls]
+Homepage="https://github.com/..."
+Documentation="https://github.com/..."
+Repository="https://github.com/..."
+
+
+# black
+[tool.black]
+line-length = 88 
+target-version = ['py312']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | dist
+)/
+'''
+
+
+# Pyright
+[tool.pyright]
+include = ["."]
+exclude = [".git", ".tox", ".venv", "__pycache__", "migrations", "static", "media", "node_modules", "templates"]
+pythonVersion = "3.12"
+pythonPlatform = "Default"
+reportMissingImports = true
+reportMissingTypeStubs = true
+typeCheckingMode = "strict"
+venvPath = "."
+venv = ".venv"
+useLibraryCodeForTypes = true
+autoSearchPaths = true
+
+[tool.pyright.django]
+enable = true
+
+
+# ruff
+[tool.ruff]
+line-length = 88 
+exclude = [".git", ".tox", ".venv", "__pycache__", "migrations", "static", "media", "node_modules", "templates"]
+fix=true           
+show-fixes=true
+respect-gitignore = true  # Учитывайте файл .gitignore
+
+[tool.ruff.lint]
+select=[
+    "F", # Pyflakes
+    "I", # isort
+    "PL", # Pylint
+    "UP", # pyupgrade
+    "E",
+]
+ignore=[
+    "UP007",
+    "E501", 
+    "B008", 
+    "C901",
+]
+
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
