@@ -46,11 +46,7 @@ sudo service ssh restart
 
 ### nvim
 #### Установка
-Установливаем конфигурацию
-```bash
-source ~/.config/bin/install_nvim.sh
-```
-
+Если у вас уже установлен Neovim, моя конфигурация будет автоматически загружена при запуске Neovim
 ##### Через пакетный менеджер ()
 Его можно установить через менеджер, но тогда это будет не последняя версия
 ```
@@ -100,6 +96,25 @@ cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim
 make
 ```
 
+### tmux
+
+1) Перед запуском, а если запустили то `:kill-session`
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+2) После запуска нажмите: `prefix` + `I` для установки (`prefix` = `^A`)
+
+#### Key bindings
+
+1) `prefix` + `I`
+	- Installs new plugins from GitHub or any other git repository
+	- Refreshes TMUX environment
+
+2) `prefix` + `U`
+	- updates plugin(s)
+
+3) `prefix` + `alt` + `u`
+	- remove/uninstall plugins not on the plugin list
 
 
 ## Для винды
