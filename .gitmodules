@@ -1,0 +1,3 @@
+[submodule "nvim"]
+	path = nvim
+	url = https://gitgub.com/Cipher-Void/nvim_conf
