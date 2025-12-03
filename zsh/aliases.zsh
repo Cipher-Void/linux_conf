@@ -1,6 +1,8 @@
 alias cls=clear
 
 alias n=nvim
+alias ls=lsd
+alias rm=rmt
 
 # Работа с Python
 alias python3="python3.13"
