@@ -159,3 +159,31 @@ cp -r alacritty-theme/* /mnt/c/Users/<YourUsername>/AppData/Roaming/alacritty/th
 с сайта скачиваем hack `nerd font` с сайта 
 https://www.nerdfonts.com/font-downloads
 и устанавливаем все шрифты
+
+#### alacritty + wsl + tmux (фикс рендеринга)
+
+При использовании Alacritty + tmux + Neovim в WSL возникают артефакты рендеринга —
+дублирование текста и левитирующие элементы при скролле.
+
+**Причина:** Alacritty использует устаревший `ConPTY` от Windows,
+который содержит баг с рендерингом виртуального текста (extmarks) в nvim.
+
+**Решение:** Заменить системный ConPTY на актуальную версию от WezTerm.
+
+1) Скачать и установить [WezTerm](https://wezfurlong.org/wezterm/installation.html)
+
+2) Скопировать два файла из папки WezTerm в папку Alacritty:
+- `conpty.dll`
+- `OpenConsole.exe`
+
+WezTerm: `C:\Program Files\WezTerm\`  
+Alacritty: `C:\Program Files\Alacritty\`
+
+3) WezTerm можно удалить — файлы останутся
+
+**Как это работает:** Windows ищет DLL сначала в папке рядом с `.exe`,
+поэтому локальный `conpty.dll` имеет приоритет над устаревшим системным.
+
+> Альтернатива: использовать Windows Terminal вместо Alacritty — он поставляется
+> с актуальным ConPTY из коробки.
+
