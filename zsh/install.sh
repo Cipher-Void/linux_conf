@@ -93,4 +93,18 @@ if [ "$SHELL" != "$(command -v zsh)" ]; then
     fi
 fi
 
+# --- 8. WSL-обёртки для Windows-бинарников (docker.exe, kubectl.exe и т.п.) ---
+if [ "${DOTFILES_PROFILE:-}" = "wsl" ] && [ -d "$DOTFILES_DIR/bin-wrappers/wsl" ]; then
+    read -r -p "Установить WSL-обёртки для Windows-бинарников (docker и т.п.) в ~/.local/bin? [y/N] " answer
+    if [[ "$answer" =~ ^[Yy]$ ]]; then
+        mkdir -p "$HOME/.local/bin"
+        for wrapper in "$DOTFILES_DIR"/bin-wrappers/wsl/*; do
+            name="$(basename "$wrapper")"
+            log "Устанавливаю обёртку: $name"
+            cp "$wrapper" "$HOME/.local/bin/$name"
+            chmod +x "$HOME/.local/bin/$name"
+        done
+    fi
+fi
+
 log "Готово. Перезапусти терминал или выполни: exec zsh"
