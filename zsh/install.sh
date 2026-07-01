@@ -71,6 +71,14 @@ else
     git clone --depth=1 https://github.com/jeffreytse/zsh-vi-mode "$ZVM_PATH"
 fi
 
+ZSH_SYNTAX_HL_PATH="$XDG_DATA_HOME/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+if [ -d "$ZSH_SYNTAX_HL_PATH" ]; then
+    log "zsh-syntax-highlighting уже установлен, пропускаю"
+else
+    log "Устанавливаю плагин zsh-syntax-highlighting"
+    git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_SYNTAX_HL_PATH"
+fi
+
 # --- 6. На время установщик мог создать ~/.zshrc — убираем, нам он не нужен ---
 if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
     log "Удаляю лишний ~/.zshrc (конфиг живёт в \$ZDOTDIR)"

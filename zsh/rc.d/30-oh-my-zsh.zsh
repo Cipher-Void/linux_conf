@@ -4,9 +4,13 @@ mkdir -p "$ZSH_CACHE_DIR/completions"
 
 ZSH_THEME="robbyrussell"
 plugins=(
-    git 
-    uv 
-    zsh-vi-mode
+  git
+  uv
+  zsh-vi-mode
+  docker
+  docker-compose
+  extract
+  zsh-syntax-highlighting   # обязательно последним
 )
 
 zstyle ':omz:update' mode disabled
