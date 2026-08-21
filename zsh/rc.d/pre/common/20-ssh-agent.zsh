@@ -1,1 +1,1 @@
-eval "$(keychain --eval --agents ssh)"
+eval "$(keychain --eval --quiet --agents ssh)"
