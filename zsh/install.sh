@@ -39,6 +39,7 @@ install_pkg() {
 install_pkg zsh
 install_pkg git
 install_pkg curl
+install_pkg keychain
 
 # --- 3. ~/.zshenv: копируем шаблон, с бэкапом если уже есть ---
 if [ -f "$HOME/.zshenv" ] && [ ! -L "$HOME/.zshenv" ]; then
