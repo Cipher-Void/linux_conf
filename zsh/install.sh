@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [ -z "${BASH_VERSION:-}" ]; then
-  exec bash "$0" "$@"
+    exec bash "$0" "$@"
 fi
 set -euo pipefail
 
@@ -57,10 +57,10 @@ else
     log "Устанавливаю oh-my-zsh"
     mkdir -p "$XDG_DATA_HOME" "$XDG_CACHE_HOME/oh-my-zsh/completions"
     ZSH="$XDG_DATA_HOME/oh-my-zsh" \
-    RUNZSH=no \
-    CHSH=no \
-    KEEP_ZSHRC=yes \
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        RUNZSH=no \
+        CHSH=no \
+        KEEP_ZSHRC=yes \
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # --- 5. Плагин zsh-vi-mode (не входит в oh-my-zsh по умолчанию) ---
@@ -106,6 +106,25 @@ if [ "${DOTFILES_PROFILE:-}" = "wsl" ] && [ -d "$DOTFILES_DIR/bin-wrappers/wsl" 
             chmod +x "$HOME/.local/bin/$name"
         done
     fi
+fi
+
+# --- 8.2 WSL-clipboard
+install_win32yank() {
+    if command -v win32yank.exe >/dev/null 2>&1; then
+        echo "win32yank уже установлен, пропускаю"
+        return
+    fi
+
+    echo "Устанавливаю win32yank..."
+    curl -sLo /tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip
+    unzip -o /tmp/win32yank.zip -d /tmp/
+    chmod +x /tmp/win32yank.exe
+    sudo mv /tmp/win32yank.exe /usr/local/bin/win32yank.exe
+    rm /tmp/win32yank.zip
+}
+
+if [ "$DOTFILES_PROFILE" = "wsl" ]; then
+    install_win32yank
 fi
 
 log "Готово. Перезапусти терминал или выполни: exec zsh"
