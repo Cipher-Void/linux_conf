@@ -52,6 +52,15 @@ size = 11
 family = "Hack Nerd Font"
 style = "Regular"
 
+# Если Hack Nerd Font не найден, запасной вариант:
+# [font.normal]
+# family = "JetBrainsMono Nerd Font"
+# style = "Regular"
+
+# [font.normal]
+# family = "FiraCode Nerd Font"
+# style = "Regular"
+
 [window]
 decorations = "None"
 dynamic_padding = true
