@@ -1,0 +1,12 @@
+.zcompdump*
+uv
+fish
+lazygit
+
+# Herdr runtime files
+herdr-client.log
+herdr-client.sock
+herdr-server.log
+herdr.sock
+session.json
+herdr/plugins
