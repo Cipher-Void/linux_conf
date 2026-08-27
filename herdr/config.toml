@@ -26,7 +26,7 @@ close_workspace  = ["prefix+shift+d", "prefix+alt+d"] # Закрыть
 
 # Меню выбора workspace
 workspace_picker = "prefix+w"  # Выбрать воркспейс
-navigate_workspace_up = "k"    # Назад
+navigate_workspace_up   = "k"  # Назад
 navigate_workspace_down = "j"  # Вперед
 
 # ==========================================
@@ -57,7 +57,7 @@ split_vertical   = "prefix+v"                    # Разделить вправ
 split_horizontal = ["prefix+minus", "prefix+s"]  # Разделить вниз
 close_pane       = "prefix+x"                    # Закрыть
 zoom             = "prefix+z"                    # Развернуть
-resize_mode = "prefix+r"                         # Режим изменения размера
+resize_mode      = "prefix+r"                    # Режим изменения размера
 
 # Перемещение (Swap)
 swap_pane_left  = ["prefix+shift+h", "prefix+alt+h"] # Поменять с левой
@@ -74,18 +74,18 @@ swap_pane_right = ["prefix+shift+l", "prefix+alt+l"] # Поменять с пр�
 # 4. РЕЖИМЫ И КОНФИГУРАЦИЯ
 # ==========================================
 settings = "prefix+alt+s" # Открыть настройки
-goto = "prefix+g"         # Перейти к вкладке/панели по имени/сессии
+goto     = "prefix+g"     # Перейти к вкладке/панели по имени/сессии
 
 # Помощь и перезагрузка
-help = ["prefix+?", "prefix+alt+slash"]            # ? это shift+/, добавляем alt+/
-reload_config = ["prefix+shift+r", "prefix+alt+r"] # Перезагрузить конфиг
-detach = "prefix+q"              # Отключиться от сессии
+help          = ["prefix+?", "prefix+alt+slash"]    # ? это shift+/, добавляем alt+/
+reload_config = ["prefix+shift+r", "prefix+alt+r"]  # Перезагрузить конфиг
+detach        = "prefix+q"                          # Отключиться от сессии
 
 # ==========================================
 # 5. РЕДАКТИРОВАНИЕ / СКРОЛЛБЕК
 # ==========================================
-copy_mode = "prefix+["        # Режим копирования
+copy_mode       = "prefix+["  # Режим копирования
 edit_scrollback = "prefix+e"  # Открыть буфер в редакторе
-toggle_sidebar = "prefix+b"   # Боковая панель
+toggle_sidebar  = "prefix+b"  # Боковая панель
 open_notification_target = "prefix+o"  # Открыть/показать всплывающее уведомление от агента
 
