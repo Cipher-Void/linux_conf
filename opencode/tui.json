@@ -1,0 +1,108 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "leader_timeout": 2000,
+  "keybinds": {
+    "leader": "ctrl+s",
+    "session_interrupt": "escape", // прервать генерацию на середине
+    "session_new": "<leader>sn", // Новая сессия
+    "session_list": "<leader>sl", // Список сессий
+    "session_compact": "<leader>sc", // Сжать контекст
+    "session_export": "<leader>se", // Экспорт сессии (сохранить или поделиться)
+    "model_list": "<leader>ml", // Список моделей
+    "model_cycle_recent": "<leader>mn", // Следующая модель
+    "model_cycle_recent_reverse": "<leader>mp", // Предыдущая
+    "editor_open": "<leader>e",
+    "app_exit": "ctrl+c,<leader>q",
+    "messages_copy": "<leader>y",
+    "messages_undo": "<leader>u", // Отменить действие AI
+    "messages_redo": "<leader>r", // Отменить отмену действие AI
+    "status_view": "<leader>S",
+    "variant_cycle": "ctrl+t", // Переключение рассуждения (reasoning - low/medium/high)
+    "session_timeline": "<leader>g", // Визуальный обзор сессии
+  },
+  "plugin": [
+    [
+      "@leohenon/opencode-vim-plugin",
+      {
+        "enable": true,
+        "vim_escape_sequence": "jk",
+        "indicator": false,
+        "vim_enter_submit": true,
+        "vim_insert_after_submit": false,
+        "vim_system_clipboard_register": false,
+        "vim_langmap": {
+          "ф": "a",
+          "Ф": "A",
+          "и": "b",
+          "И": "B",
+          "с": "c",
+          "С": "C",
+          "в": "d",
+          "В": "D",
+          "у": "e",
+          "У": "E",
+          "а": "f",
+          "А": "F",
+          "п": "g",
+          "П": "G",
+          "р": "h",
+          "Р": "H",
+          "ш": "i",
+          "Ш": "I",
+          "о": "j",
+          "О": "J",
+          "л": "k",
+          "Л": "K",
+          "д": "l",
+          "Д": "L",
+          "ь": "m",
+          "Ь": "M",
+          "т": "n",
+          "Т": "N",
+          "щ": "o",
+          "Щ": "O",
+          "з": "p",
+          "З": "P",
+          "й": "q",
+          "Й": "Q",
+          "к": "r",
+          "К": "R",
+          "ы": "s",
+          "Ы": "S",
+          "е": "t",
+          "Е": "T",
+          "г": "u",
+          "Г": "U",
+          "м": "v",
+          "М": "V",
+          "ц": "w",
+          "Ц": "W",
+          "ч": "x",
+          "Ч": "X",
+          "н": "y",
+          "Н": "Y",
+          "я": "z",
+          "Я": "Z"
+        },
+        "vim_normal_leader": "space",
+        "normal_keybinds": {
+          "escape": "session.interrupt",
+          "<leader>sn": "session.new",
+          "<leader>sl": "session.list",
+          "<leader>sc": "session.compact",
+          "<leader>se": "session.export",
+          "<leader>ml": "model.list",
+          "<leader>mn": "model.cycle",
+          "<leader>mp": "model.cycle.reverse",
+          "<leader>e": "editor.open",
+          "<leader>q": "app.exit",
+          "<leader>y": "messages.copy",
+          "<leader>u": "messages.undo",
+          "<leader>r": "messages.redo",
+          "<leader>S": "status.view",
+          "<leader>g": "session.timeline"
+        }
+      }
+    ]
+  ]
+}

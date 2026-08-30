@@ -1,0 +1,36 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "{env:OLLAMA_BASE_URL}"
+      },
+      "models": {
+        "hf.co/bigatuna/Qwen3.5-9b-Sushi-Coder-RL-GGUF:Q4_K_M": {
+          "name": "hf.co/bigatuna/Qwen3.5-9b-Sushi-Coder-RL-GGUF:Q4_K_M"
+        }
+      }
+    },
+    "anthropic": {
+      "models": {
+        "claude-sonnet-5": {}
+      }
+    }
+  },
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "git *": "allow",
+      "git commit *": "ask",
+      "git push *": "deny",
+      "rm -rf *": "deny",
+      "npm *": "allow",
+      "grep *": "allow"
+    },
+    "edit": "allow",
+    "webfetch": "ask"
+  },
+  "share": "disabled",
+}
