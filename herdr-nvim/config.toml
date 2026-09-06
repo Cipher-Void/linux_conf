@@ -1,0 +1,3 @@
+[sidebar]
+nvim_bin = "nvim"
+position = "left"

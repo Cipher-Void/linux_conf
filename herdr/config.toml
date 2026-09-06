@@ -35,7 +35,6 @@ navigate_workspace_down = "j"  # Вперед
 # Навигация
 next_tab      = ["prefix+n", "prefix+shift+right"] # Следующая
 previous_tab  = ["prefix+p", "prefix+shift+left"]  # Предыдущая
-last_tab      = "prefix+tab"                       # Последняя использованная
 switch_tab    = "prefix+1..9"                      # Прямой переход
 
 # Операции
@@ -61,8 +60,8 @@ resize_mode      = "prefix+r"                    # Режим изменения
 
 # Перемещение (Swap)
 swap_pane_left  = ["prefix+shift+h", "prefix+alt+h"] # Поменять с левой
-swap_pane_down  = ["prefix+shift+j", "prefix+alt+j"] # Поменять с нижней
-swap_pane_up    = ["prefix+shift+k", "prefix+alt+k"] # Поменять с верхней
+# swap_pane_down  = ["prefix+shift+j", "prefix+alt+j"] # Поменять с нижней
+# swap_pane_up    = ["prefix+shift+k", "prefix+alt+k"] # Поменять с верхней
 swap_pane_right = ["prefix+shift+l", "prefix+alt+l"] # Поменять с правой
 
 # Цикл (Перебор)
@@ -85,7 +84,23 @@ detach        = "prefix+q"                          # Отключиться о�
 # 5. РЕДАКТИРОВАНИЕ / СКРОЛЛБЕК
 # ==========================================
 copy_mode       = "prefix+["  # Режим копирования
-edit_scrollback = "prefix+e"  # Открыть буфер в редакторе
+# edit_scrollback = "prefix+e"  # Открыть буфер в редакторе
 toggle_sidebar  = "prefix+b"  # Боковая панель
-open_notification_target = "prefix+o"  # Открыть/показать всплывающее уведомление от агента
+# open_notification_target = "prefix+o"  # Открыть/показать всплывающее уведомление от агента
 
+# ==========================================
+# 6. Plugins
+# ==========================================
+
+# herdr-nvim 
+[[keys.command]]
+key = "prefix+e"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.toggle"
+description = "nvim sidebar"
+
+[[keys.command]]
+key = "prefix+o"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.pick-file"
+description = "open file from agent output"
