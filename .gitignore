@@ -3,6 +3,9 @@ uv
 fish
 lazygit
 
+# tmux
+tmux/plugins/*
+
 # Herdr runtime files
 herdr-client.log
 herdr-client.sock
@@ -10,3 +13,7 @@ herdr-server.log
 herdr.sock
 session.json
 herdr/plugins
+herdr/release-notes.json
+
+# secrets
+zsh/rc.d/pre/common/00-secrets.zsh
