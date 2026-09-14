@@ -1,0 +1,5 @@
+{
+  "plugin": [
+    "@leohenon/opencode-vim-plugin"
+  ]
+}
