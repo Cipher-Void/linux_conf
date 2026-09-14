@@ -2,6 +2,7 @@
 uv
 fish
 lazygit
+.flake8
 
 # tmux
 tmux/plugins/*
@@ -14,6 +15,13 @@ herdr.sock
 session.json
 herdr/plugins
 herdr/release-notes.json
+herdr/plugins.json
+
+claude/
+dt/
+mimeapps.list
+neofetch/
+opencode/.ponytail-active
 
 # secrets
 zsh/rc.d/pre/common/00-secrets.zsh
