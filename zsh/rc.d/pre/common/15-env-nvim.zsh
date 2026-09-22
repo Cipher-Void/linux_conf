@@ -1,1 +1,1 @@
-export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+_path_prepend "$HOME/.local/share/nvim/mason/bin"

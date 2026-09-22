@@ -1,2 +1,8 @@
 export EDITOR=nvim
-export PATH=$PATH:$HOME/.python3.13/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/lib/node_modules
+
+_path_prepend "$HOME/.local/bin"
+_path_prepend "$HOME/.python3.13/bin"
+
+_path_append /usr/local/bin
+_path_append /usr/bin
+_path_append /bin

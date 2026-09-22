@@ -1,3 +1,5 @@
+typeset -U path PATH
+
 source "$ZDOTDIR/rc.d/00-detect-profile.zsh"
 
 # --- PRE: до oh-my-zsh ---

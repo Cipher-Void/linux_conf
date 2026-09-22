@@ -1,1 +1,1 @@
-export PATH=$HOME/.cargo/bin:$PATH
+_path_prepend "$HOME/.cargo/bin"

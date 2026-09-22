@@ -1,1 +1,1 @@
-export PATH=$HOME.opencode/bin:$PATH
+_path_prepend "$HOME/.opencode/bin"
