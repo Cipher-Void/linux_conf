@@ -160,30 +160,53 @@ cp -r alacritty-theme/* /mnt/c/Users/<YourUsername>/AppData/Roaming/alacritty/th
 https://www.nerdfonts.com/font-downloads
 и устанавливаем все шрифты
 
-#### alacritty + wsl + tmux (фикс рендеринга)
+#### Alacritty + WSL: устаревший ConPTY (фикс рендеринга и клавиатуры)
 
-При использовании Alacritty + tmux + Neovim в WSL возникают артефакты рендеринга —
-дублирование текста и левитирующие элементы при скролле.
+Alacritty на Windows 10 использует системный `ConPTY`, который старый и содержит баги.
+Из-за этого возникают две разные проблемы:
 
-**Причина:** Alacritty использует устаревший `ConPTY` от Windows,
-который содержит баг с рендерингом виртуального текста (extmarks) в nvim.
+1. **Рендеринг (Alacritty + tmux + Neovim):** дублирование текста и «левитирующие»
+   элементы при скролле. Причина: баг в рендеринге виртуального текста (extmarks) в nvim.
+2. **Клавиатура (herdr):** не работают комбинации с Shift (`prefix+shift+n`, `prefix+?`).
+   Причина: системный ConPTY теряет или искажает расширенные клавиатурные
+   последовательности (kitty keyboard protocol), которые включает herdr.
+   Без локального ConPTY в herdr может не работать даже `Ctrl+B`.
 
-**Решение:** Заменить системный ConPTY на актуальную версию от WezTerm.
+В Windows Terminal обеих проблем нет: он поставляется со своим актуальным ConPTY.
+На Windows 11 проблем не было, там системный ConPTY новее.
 
-1) Скачать и установить [WezTerm](https://wezfurlong.org/wezterm/installation.html)
+**Решение:** положить актуальные `conpty.dll` и `OpenConsole.exe` рядом с `alacritty.exe`.
+Windows ищет DLL сначала в папке рядом с `.exe`, поэтому локальный `conpty.dll`
+имеет приоритет над системным.
 
-2) Скопировать два файла из папки WezTerm в папку Alacritty:
-- `conpty.dll`
-- `OpenConsole.exe`
+1) Скачать с [nuget.org](https://www.nuget.org/packages/Microsoft.Windows.Console.ConPTY)
+   пакет `Microsoft.Windows.Console.ConPTY` (Download package).
+2) Переименовать `.nupkg` в `.zip` и распаковать.
+3) Найти два файла (пути внутри пакета могут слегка отличаться, искать по именам):
+   - `conpty.dll` — `runtimes/win-x64/native/`
+   - `OpenConsole.exe` — `build/native/runtimes/x64/`
+4) Закрыть все окна Alacritty.
+5) Сохранить старые файлы из `C:\Program Files\Alacritty\` под другим именем
+   (например, `conpty.dll.bak`) и скопировать туда новую пару.
+   Оба файла должны быть из одного пакета.
+6) Запустить Alacritty заново.
 
-WezTerm: `C:\Program Files\WezTerm\`  
-Alacritty: `C:\Program Files\Alacritty\`
+**Важно:** файлы `conpty.dll` и `OpenConsole.exe` от WezTerm чинят рендеринг nvim,
+но их версия оказалась слишком старой для herdr: Shift-комбо по-прежнему не работали.
+Использовать свежий пакет из NuGet.
 
-3) WezTerm можно удалить — файлы останутся
+**Проверка клавиатуры:**
 
-**Как это работает:** Windows ищет DLL сначала в папке рядом с `.exe`,
-поэтому локальный `conpty.dll` имеет приоритет над устаревшим системным.
+```bash
+printf '\e[>7u'; sleep 8; printf '\e[<u'; cat -v
+```
 
-> Альтернатива: использовать Windows Terminal вместо Alacritty — он поставляется
-> с актуальным ConPTY из коробки.
+За 8 секунд нажать `n`, `Shift+N`, `Shift+/`, затем Enter и Ctrl+C.
+Если фикс работает, `Shift+N` приходит в виде `^[[110:78;2:3u`.
+Если приходит просто `N`, значит ConPTY всё ещё системный или слишком старый.
 
+**Диагностика:** если Alacritty запущен, в Диспетчере задач должен быть процесс
+`OpenConsole.exe`. Если вместо него `conhost.exe`, используется системный ConPTY.
+
+
+> Альтернатива: использовать Windows Terminal вместо Alacritty.
